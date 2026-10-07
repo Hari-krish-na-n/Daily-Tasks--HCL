@@ -6,48 +6,32 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- =====================================================
-         Project Identity
-         ===================================================== -->
     <groupId>com.auction</groupId>
-    <artifactId>online-auction-training</artifactId>
+    <artifactId>online-auction-system</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>Online Auction System - Training</name>
+    <name>Online Auction System - Day 02</name>
     <description>
-        Beginner-friendly Java 21 Maven console application for
-        HCL Day 1 and Day 2 training tasks. Covers Java Platform
-        Basics, Language Fundamentals, and Agile/Scrum concepts
+        Java 21 Maven application demonstrating core language fundamentals
+        (primitives, arrays, constants, operators, casting, overflow, precision)
         using the Online Auction System domain.
     </description>
 
-    <!-- =====================================================
-         Java 21 Properties
-         ===================================================== -->
     <properties>
         <java.version>21</java.version>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <exec.mainClass>com.auction.PlatformInfo</exec.mainClass>
+        <exec.mainClass>com.auction.AuctionDataDemo</exec.mainClass>
     </properties>
 
-    <!-- =====================================================
-         No external dependencies — plain Java only
-         ===================================================== -->
     <dependencies>
-        <!-- No Spring, no Hibernate, no database drivers -->
-        <!-- This is a plain Java 21 training project     -->
+        <!-- Plain Java 21 - no external frameworks -->
     </dependencies>
 
-    <!-- =====================================================
-         Build Configuration
-         ===================================================== -->
     <build>
         <plugins>
-
-            <!-- Compiler plugin: enforce Java 21 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -58,22 +42,14 @@
                 </configuration>
             </plugin>
 
-            <!-- Exec plugin: run console classes with mvn exec:java -->
-            <!--
-                Usage examples:
-                  mvn exec:java -Dexec.mainClass="com.auction.PlatformInfo"
-                  mvn exec:java -Dexec.mainClass="com.auction.AuctionDataDemo"
-            -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.3.0</version>
                 <configuration>
-                    <!-- Default main class; override with -Dexec.mainClass="..." -->
                     <mainClass>${exec.mainClass}</mainClass>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 
