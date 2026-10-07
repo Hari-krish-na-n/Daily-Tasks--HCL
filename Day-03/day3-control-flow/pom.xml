@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Maven Standard Coordinates -->
+    <groupId>com.auction</groupId>
+    <artifactId>day3-control-flow</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>Online Auction System - Day 03: Control Flow</name>
+    <description>
+        Day 3 training module demonstrating core Java control-flow statements
+        (if, if/else, else-if, switch, while, do-while, for, enhanced for,
+        break, continue, labelled break, safe input validation) and Maven lifecycle
+        with dev/prod profiles for the Online Auction System domain.
+    </description>
+
+    <!-- Global Properties -->
+    <properties>
+        <java.version>21</java.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <exec.mainClass>com.auction.AuctionConsoleApp</exec.mainClass>
+        <junit.version>5.11.4</junit.version>
+        <!-- Default environment property overridden by active profile -->
+        <environment>development</environment>
+    </properties>
+
+    <!-- Dependencies -->
+    <dependencies>
+        <!--
+            JUnit 5 Jupiter (Test Scope):
+            Required for automated testing during the Maven 'test' lifecycle phase.
+            Used to verify domain business rules (bid validation, reserve price, anti-sniping)
+            without being included in the packaged production application.
+        -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- Build and Plugins Configuration -->
+    <build>
+        <plugins>
+            <!-- Compiler Plugin: Configured for Java 21 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <release>21</release>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <!-- Surefire Plugin: Executes unit tests during 'mvn test' and 'mvn package' -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.2</version>
+            </plugin>
+
+            <!-- Exec Plugin: Enables running the application with 'mvn exec:java' -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.5.0</version>
+                <configuration>
+                    <mainClass>${exec.mainClass}</mainClass>
+                    <systemProperties>
+                        <systemProperty>
+                            <key>app.environment</key>
+                            <value>${environment}</value>
+                        </systemProperty>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+
+            <!-- JAR Plugin: Creates an executable JAR with Main-Class and manifest info -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>${exec.mainClass}</mainClass>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                        </manifest>
+                        <manifestEntries>
+                            <Build-Environment>${environment}</Build-Environment>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <!-- Clean Plugin: Configured to gracefully handle Windows/IDE file locks -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.4.0</version>
+                <configuration>
+                    <failOnError>false</failOnError>
+                    <retryOnError>true</retryOnError>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!--
+        Maven Profiles:
+        Demonstrates environment customization (dev vs prod).
+        Activation:
+            mvn clean package -Pdev
+            mvn clean package -Pprod
+    -->
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <environment>development</environment>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>prod</id>
+            <properties>
+                <environment>production</environment>
+            </properties>
+        </profile>
+    </profiles>
+
+</project>

@@ -1,4 +1,4 @@
-# Daily Tasks — HCL Java Training
+# Online Auction System Training — HCL Java Program
 
 [![Java](https://img.shields.io/badge/Java-21-orange.svg)](https://openjdk.org/projects/jdk/21/)
 [![Maven](https://img.shields.io/badge/Build-Maven-blue.svg)](https://maven.apache.org/)
@@ -8,63 +8,78 @@
 **Author:** Hari Krishna  
 **Domain:** Online Auction System  
 
+Each training day is maintained as an independent, modular folder to preserve step-by-step progress and facilitate structured code reviews.
+
 ---
 
 ## 📂 Repository Structure
 
 ```text
-Daily-Tasks--HCL/
-├── .gitignore
-├── README.md
+online-auction-training/
 │
 ├── Day-01/
-│   ├── PlatformInfo.java         ← Java platform inspection program
-│   ├── run.bat                   ← Batch script to compile and run PlatformInfo
-│   ├── README.md                 ← Day 1 platform basics & JVM guide
-│   └── docs/
-│       ├── USER_STORIES.md       ← 8 Functional requirements (FR1-FR8) as user stories
-│       ├── DEFINITION_OF_DONE.md ← Team Definition of Done checklist
-│       └── AGILE_NOTES.md        ← Agile & Scrum concepts explained
+│   └── day1-java-platform-basics/
+│       ├── PlatformInfo.java             ← Java platform inspection program
+│       ├── run.bat                       ← Batch script to compile and run PlatformInfo
+│       ├── README.md                     ← Day 1 platform basics & JVM guide
+│       └── docs/
+│           ├── USER_STORIES.md           ← 8 Functional requirements (FR1-FR8)
+│           ├── DEFINITION_OF_DONE.md     ← Team Definition of Done checklist
+│           └── AGILE_NOTES.md            ← Agile & Scrum concepts explained
 │
-└── Day-02/
-    └── online-auction-system/
-        ├── pom.xml               ← Maven Java 21 build file
-        ├── .gitignore            ← Ignores target/ and IDE files
-        ├── README.md             ← Day 2 language fundamentals guide
-        ├── run.bat               ← Batch script to compile and run demo
-        └── src/
-            └── main/
-                └── java/
-                    └── com/
-                        └── auction/
-                            ├── AuctionConstants.java   ← Business rule constants
-                            └── AuctionDataDemo.java    ← Java language fundamentals demo
+├── Day-02/
+│   └── day2-language-fundamentals/
+│       ├── pom.xml                       ← Maven Java 21 build file
+│       ├── .gitignore                    ← Ignores target/ and IDE files
+│       ├── README.md                     ← Day 2 language fundamentals guide
+│       ├── run.bat                       ← Batch script to compile and run demo
+│       └── src/main/java/com/auction/
+│           ├── AuctionConstants.java     ← Business rule constants
+│           ├── AuctionDataDemo.java      ← Primitive types, arrays, casting demo
+│           └── PlatformInfo.java         ← Platform utility
+│
+├── Day-03/
+│   └── day3-control-flow/
+│       ├── pom.xml                       ← Maven build with dev/prod profiles
+│       ├── README.md                     ← Day 3 control flow & Maven guide
+│       ├── .gitignore                    ← Ignores target/ and IDE files
+│       ├── run.bat                       ← Build & run batch script
+│       ├── src/
+│       │   ├── main/java/com/auction/
+│       │   │   ├── AuctionConsoleApp.java← Interactive console app (8 FRs)
+│       │   │   ├── AuctionConstants.java ← Business constants
+│       │   │   ├── Auction.java          ← Auction entity model
+│       │   │   ├── Bid.java              ← Bid entity model
+│       │   │   └── User.java             ← User authentication model
+│       │   └── test/java/com/auction/
+│       │       └── AuctionConsoleAppTest.java ← Automated JUnit 5 test suite
+│       └── docs/
+│           ├── CONTROL_FLOW_NOTES.md     ← Control flow theory & examples
+│           ├── MAVEN_NOTES.md            ← Maven lifecycle & profiles guide
+│           └── TEST_CASES.md             ← Comprehensive test cases & logs
+│
+├── .gitignore                            ← Root Git ignore configuration
+└── README.md                             ← Main training repository documentation
 ```
 
 ---
 
 ## 📅 Daily Tasks Overview
 
-### [Day 01 — Java Platform Basics + Agile/Scrum Basics](Day-01/)
-- **Java Platform Basics:**
-  - `PlatformInfo.java` prints Java version, OS, processors, maximum heap, used heap, and free heap memory.
-  - Bytecode inspection via `javap -c` and class loading inspection via `java -verbose:class`.
-  - Detailed architecture guide of the JVM execution flow (JVM, JRE, JDK, ClassLoader, Heap, Stack, Metaspace, PC Register, JIT Compiler, GC).
-- **Agile / Scrum Documentation:**
-  - 8 User Stories for the Online Auction System with Fibonacci story points (`1, 2, 3, 5, 8`), acceptance criteria, and DoD.
-  - Definition of Done (`docs/DEFINITION_OF_DONE.md`) covering compilation, code style, testing, and Git hygiene.
-  - Agile Notes (`docs/AGILE_NOTES.md`) covering Agile principles, Scrum roles, sprints, backlog, ceremonies, and estimation.
+### [Day 01 — Java Platform Basics + Agile/Scrum Basics](Day-01/day1-java-platform-basics/)
+- **Java Platform Basics:** JVM runtime environment inspection, heap memory metrics, ClassLoader hierarchy, bytecode disassembly with `javap -c`, and class loading tracing via `-verbose:class`.
+- **Agile / Scrum Documentation:** 8 user stories with Fibonacci points, acceptance criteria, DoD checklist, and Scrum framework notes.
 
-### [Day 02 — Language Fundamentals + Git Fundamentals](Day-02/online-auction-system/)
-- **Language Fundamentals (Maven Console Application):**
-  - **8 Primitive Types:** `byte`, `short`, `int`, `long`, `float`, `double`, `char`, `boolean` with domain examples.
-  - **1-D Array:** Weekly bid statistics (Total, Average, Max, Min).
-  - **2-D Array:** Matrix of bids across multiple auctions.
-  - **Constants:** `AuctionConstants` eliminating magic numbers.
-  - **Operators:** Arithmetic, relational, logical, assignment, increment/decrement, and ternary operators.
-  - **Type Casting:** Widening (implicit) vs. Narrowing (explicit truncation).
-  - **Integer Overflow:** Demonstrating silent overflow and resolving with `long`.
-  - **Floating-Point Precision:** Floating-point limitations (`0.1 + 0.2 != 0.3`) and safe epsilon comparison.
+### [Day 02 — Language Fundamentals + Git Fundamentals](Day-02/day2-language-fundamentals/)
+- **Language Fundamentals:** 8 primitive data types, 1D and 2D arrays, business constants (`AuctionConstants`), arithmetic/relational/logical operators, type casting (widening vs narrowing), integer overflow detection, and floating-point precision comparisons.
+
+### [Day 03 — Control Flow + Maven](Day-03/day3-control-flow/)
+- **Control Flow Concepts:**
+  - Branching: `if`, `if-else`, `else-if`, `switch` (8 FR menu router and admin moderation).
+  - Looping: `do-while` (console menu loop), `while` (safe input validation & auto-bidding), traditional `for` (bid ledgers), enhanced `for` (auction listings & mini-statements).
+  - Jump statements: `break` (3-attempt PIN security loop), `continue` (skipping rejected auctions in audit), `labelled break` (`searchAuction:` outer loop exit).
+  - Robust Input Validation: Immune to crashes from strings (`abc`), negative numbers, empty input, or out-of-range options.
+- **Maven Architecture:** Standard layout, POM coordinates (`com.auction:day3-control-flow:1.0-SNAPSHOT`), full build lifecycle (`validate` to `install`), JUnit 5 dependency in `test` scope, and `dev` / `prod` profile configurations.
 
 ---
 
@@ -72,18 +87,33 @@ Daily-Tasks--HCL/
 
 ### Day 01
 ```bash
-cd Day-01
+cd Day-01/day1-java-platform-basics
 javac PlatformInfo.java
 java PlatformInfo
-
 # Or simply:
 run.bat
 ```
 
 ### Day 02
 ```bash
-cd Day-02/online-auction-system
+cd Day-02/day2-language-fundamentals
 mvn compile
+mvn exec:java
+# Or simply:
+run.bat
+```
+
+### Day 03
+```bash
+cd Day-03/day3-control-flow
+
+# Build and test
+mvn clean package
+
+# Run the console application
+java -jar target/day3-control-flow-1.0-SNAPSHOT.jar
+
+# Or run via Maven
 mvn exec:java
 
 # Or simply:
@@ -95,25 +125,28 @@ run.bat
 ## ✅ Deliverables Checklist
 
 ```text
-[x] JDK 21 configured
-[x] Day-01 folder created
-[x] PlatformInfo runs using javac/java
-[x] javap -c verified
-[x] -verbose:class verified
-[x] 8 user stories created with story points
-[x] Definition of Done created
-[x] Agile notes created
-[x] Day-02/online-auction-system Maven project created
-[x] Primitive data types demonstrated
-[x] 1-D array demonstrated
-[x] 2-D array demonstrated
-[x] Constants created
-[x] Operators demonstrated
-[x] Type casting demonstrated
-[x] Overflow demonstrated
-[x] Floating-point precision demonstrated
-[x] Maven compile successful
-[x] .gitignore configured
-[x] README completed
-[x] Pushed to GitHub (main branch)
+[x] Day-01 preserved in day1-java-platform-basics
+[x] Day-02 preserved in day2-language-fundamentals
+[x] Day-03 created in day3-control-flow
+[x] Java 21 configured across all modules
+[x] if / else-if / else implemented
+[x] switch implemented
+[x] while loop implemented
+[x] do-while loop implemented
+[x] traditional for loop implemented
+[x] enhanced for loop implemented
+[x] break implemented (3 login attempts)
+[x] continue implemented (audit filter)
+[x] labelled break implemented (nested search)
+[x] input validation implemented (never crashes on abc, -1, 999)
+[x] 8 Functional Requirements menu implemented
+[x] Maven standard project layout verified
+[x] Maven lifecycle documented (validate -> compile -> test -> package -> install)
+[x] Dev and Prod profiles configured and tested
+[x] mvn clean package succeeds
+[x] mvn clean package -Pdev succeeds
+[x] mvn clean package -Pprod succeeds
+[x] JUnit 5 automated test suite passing
+[x] Clean .gitignore without build artifacts
+[x] Documentation complete
 ```
