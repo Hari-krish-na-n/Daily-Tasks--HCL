@@ -1,6 +1,6 @@
-# Day 02 — Java Language Fundamentals
+# Day 02 — Language Fundamentals
 **Domain:** Online Auction System  
-**Project:** `online-auction-system`  
+**Project:** `day2-language-fundamentals`  
 **Training:** HCL Day 2
 
 ---
