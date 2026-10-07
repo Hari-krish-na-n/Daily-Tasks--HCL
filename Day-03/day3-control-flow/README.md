@@ -1,80 +1,64 @@
 # Day 03 — Control Flow + Maven
 
-[![Java](https://img.shields.io/badge/Java-21-orange.svg)](https://openjdk.org/projects/jdk/21/)
-[![Maven](https://img.shields.io/badge/Build-Maven-blue.svg)](https://maven.apache.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+Java console application for the Online Auction System project created to practice Java control-flow statements and Maven basics.
 
-**Project:** Online Auction System — Day 3  
-**Module:** `day3-control-flow`  
-**Package:** `com.auction`  
+## Topics Practiced
 
----
-
-## 📌 Overview
-
-Day 3 focuses on implementing all foundational **Java Control Flow structures** alongside **Apache Maven build management** using the **Online Auction System** domain:
-
-1. **Decision Making & Branching:** `if`, `if-else`, `else-if`, `switch`
-2. **Looping & Iteration:** `while`, `do-while`, traditional `for`, enhanced `for`
-3. **Jump & Control Transfer:** `break`, `continue`, `labelled break`
-4. **Resilience & Quality:** Safe input validation (never crashing on non-numeric or out-of-bounds input)
-5. **Maven Engineering:** Standard directory layout, POM coordinates, Maven build lifecycle phases, dependency management, and `dev`/`prod` profiles.
+1. **Control Flow:** `if`, `if-else`, `else-if`, `switch`, `while`, `do-while`, traditional `for`, and `enhanced for` loops.
+2. **Break and Continue:** Used `break` for PIN login attempts and `continue` to skip invalid/rejected auction records during audit.
+3. **Labelled Break:** Used `break searchAuction;` to exit the outer loop directly when finding a bidder in nested loops.
+4. **Input Validation:** Safely handles non-numeric input (such as `abc`), negative values, out-of-range choices, and empty lines without crashing.
+5. **Maven Setup:** Standard directory layout, POM coordinates, Maven lifecycle phases (`validate`, `compile`, `test`, `package`), and `dev`/`prod` profiles.
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 Day-03/day3-control-flow/
-├── pom.xml                                ← Java 21 Maven build file with profiles
-├── README.md                              ← Day 3 documentation & execution guide
-├── .gitignore                             ← Ignores target/ and IDE files
-├── run.bat                                ← Convenience batch runner script
+├── pom.xml
+├── README.md
+├── .gitignore
+├── run.bat
 │
 ├── src/
-│   ├── main/
-│   │   └── java/
-│   │       └── com/
-│   │           └── auction/
-│   │               ├── AuctionConsoleApp.java  ← Main console application with all 8 FRs
-│   │               ├── AuctionConstants.java   ← Business rule constants (no magic numbers)
-│   │               ├── Auction.java            ← Domain model for auction listings
-│   │               ├── Bid.java                ← Domain model for bids
-│   │               └── User.java               ← Domain model for users and authentication
+│   ├── main/java/com/auction/
+│   │   ├── AuctionConsoleApp.java
+│   │   ├── AuctionConstants.java
+│   │   ├── Auction.java
+│   │   ├── Bid.java
+│   │   └── User.java
 │   │
-│   └── test/
-│       └── java/
-│           └── com/
-│               └── auction/
-│                   └── AuctionConsoleAppTest.java ← Automated JUnit 5 tests
+│   └── test/java/com/auction/
+│       └── AuctionConsoleAppTest.java
 │
 └── docs/
-    ├── CONTROL_FLOW_NOTES.md              ← Comprehensive control-flow concepts guide
-    ├── MAVEN_NOTES.md                     ← Maven lifecycle, layout & profiles guide
-    └── TEST_CASES.md                      ← Test case matrix and verification logs
+    ├── CONTROL_FLOW_NOTES.md
+    ├── MAVEN_NOTES.md
+    └── TEST_CASES.md
 ```
 
 ---
 
-## ⚙️ Control Flow Concepts Demonstrated
+## Control Flow Implementation Details
 
-| Control Flow | Auction System Application | Location / Method |
-| :--- | :--- | :--- |
-| **`if / else`** | Validates bids (`bid >= current + increment`), reserve prices, positive amounts | `handlePlaceBid()`, `validateBid()`, `isReservePriceMet()` |
-| **`else-if`** | Multi-role authorization checks (`SELLER`, `BIDDER`, `ADMIN`) | `handleUserRegistrationAndLogin()` |
-| **`switch`** | Routes main menu selections (0-8) and admin moderation actions | `main()`, `handleAdminModeration()` |
-| **`while`** | Input validation loops, automated proxy counter-bidding increments | `readValidatedMenuChoice()`, `handleProxyBidding()` |
-| **`do-while`** | Main interactive console menu (guaranteed to render at least once) | `main()` |
-| **`for` (traditional)** | Indexed iteration over auction bid ledgers (`i = 0; i < bids.size(); i++`) | `handleSettlementAndShipment()` |
-| **`enhanced for`** | Iterating over in-memory auction listings and mini-statement display | `displayCurrentAuctions()`, `handleAdminModeration()` |
-| **`break`** | Exits 3-attempt PIN security loop immediately upon correct PIN | `handleUserRegistrationAndLogin()` |
-| **`continue`** | Skips non-approved/rejected auction records during audit verification | `handleSettlementAndShipment()` |
-| **`labelled break`** | Terminating outer loop directly during nested multi-auction bidder search | `handleSettlementAndShipment()` (`searchAuction:`) |
-| **`input validation`**| Prevents crashes on `abc`, negative numbers, empty input, or bounds errors | `readValidatedMenuChoice()`, `readPositiveDouble()` |
+| Control Flow | Where it is used in the Auction System | Method / Location |
+|---|---|---|
+| `if / else` | Validating minimum bid increment and reserve price | `handlePlaceBid()`, `handleCloseAuctionAndDeclareWinner()` |
+| `else-if` | Checking user roles (Seller, Bidder, Admin) | `handleUserRegistrationAndLogin()` |
+| `switch` | Main menu navigation and admin moderation choices | `main()`, `handleAdminModeration()` |
+| `while` | Reading validated user input and proxy bidding increments | `readValidatedMenuChoice()`, `handleProxyBidding()` |
+| `do-while` | Main console menu loop (runs at least once) | `main()` |
+| `for` | Iterating through bid history with an index counter | `handleSettlementAndShipment()` |
+| `enhanced for` | Displaying active auctions list and mini-statement | `displayCurrentAuctions()`, `handleAdminModeration()` |
+| `break` | Exiting 3-attempt PIN login loop upon success | `handleUserRegistrationAndLogin()` |
+| `continue` | Skipping rejected auction records during audit verification | `handleSettlementAndShipment()` |
+| `labelled break`| Terminating outer search loop directly upon finding bidder | `handleSettlementAndShipment()` (`searchAuction:`) |
+| `input validation`| Preventing crashes on non-numeric or out-of-range input | `readValidatedMenuChoice()`, `readPositiveDouble()` |
 
 ---
 
-## 📋 8 Functional Requirements (Console Menu)
+## Console Menu (8 Functional Requirements)
 
 ```text
 ========================================
@@ -93,81 +77,46 @@ Day-03/day3-control-flow/
 Enter your choice:
 ```
 
-- **FR1 — User Registration / Login:** Role assignment (`SELLER`, `BIDDER`, `ADMIN`) + 3-attempt PIN security with `break`.
-- **FR2 — Auction Listing:** Listing creation with positive starting price and reserve price validation.
-- **FR3 — Admin Moderation:** Review pending listings and Approve/Reject via `switch`.
-- **FR4 — Bidding:** Minimum increment enforcement (`currentBid + MINIMUM_BID_INCREMENT`) via `if/else`.
-- **FR5 — Proxy / Auto Bidding:** Automated simulated bidding steps up to ceiling budget using `while`.
-- **FR6 — Anti-Sniping:** Automatic auction extension if bid arrives within final `ANTI_SNIPE_MINUTES`.
-- **FR7 — Closing & Winner Declaration:** Evaluates highest bid against reserve price; marks `SOLD` or `UNSOLD`.
-- **FR8 — Settlement & Shipment:** Escrow financials, traditional `for` bid ledgers, `continue` audit filter, and `labelled break` search.
+- **FR1 — User Registration / Login:** Select role and verify 4-digit PIN (max 3 attempts).
+- **FR2 — Create Auction Listing:** Enter product name, starting price, and reserve price with validation.
+- **FR3 — Admin Approve / Reject Listing:** Approve or reject listings using `switch`.
+- **FR4 — Place Bid:** Validates that new bid is at least `current bid + ₹500`.
+- **FR5 — Proxy / Auto Bidding:** Automatically increments bids in steps of ₹500 up to max budget.
+- **FR6 — Anti-Sniping:** Extends auction by 2 minutes if bid is placed within final 2 minutes.
+- **FR7 — Close Auction & Declare Winner:** Checks if reserve price is met; declares winner or marks unsold.
+- **FR8 — Settlement & Shipment:** Shows settlement status, bid ledger using `for`, audit using `continue`, and bidder search using labelled break.
 
 ---
 
-## 🛠️ Maven Configuration & Lifecycle
+## Maven Commands
 
-### Standard Coordinates
-```xml
-<groupId>com.auction</groupId>
-<artifactId>day3-control-flow</artifactId>
-<version>1.0-SNAPSHOT</version>
-<packaging>jar</packaging>
-```
-
-### Build Lifecycle Flow
-```text
-validate  ──>  compile  ──>  test  ──>  package  ──>  install
-```
-
-### Profiles
-- **`dev`** (Default): Injects `environment=development` property.
-- **`prod`**: Injects `environment=production` property.
-
----
-
-## 🚀 How to Run
-
-### 1. Build and Package
+### Build and Package
 ```bash
-cd Day-03/day3-control-flow
-
-# Clean and package with default development profile
 mvn clean package
-
-# Or package explicitly with production profile
-mvn clean package -Pprod
 ```
 
-### 2. Run the Application
-
-#### Option A: Run JAR Directly
-```bash
-java -jar target/day3-control-flow-1.0-SNAPSHOT.jar
-```
-
-#### Option B: Run via Maven Exec Plugin
-```bash
-mvn exec:java
-```
-
-#### Option C: Run using Convenience Script
-```bash
-run.bat
-```
-
-### 3. Run Automated Unit Tests
+### Run Tests
 ```bash
 mvn test
 ```
 
----
+### Run Application
+```bash
+# Using JAR
+java -jar target/day3-control-flow-1.0-SNAPSHOT.jar
 
-## ✅ Quality Checklist
+# Or using Maven
+mvn exec:java
 
-- [x] Java 21 configured and enforced
-- [x] All 10 control-flow statements implemented with auction domain logic
-- [x] Application handles invalid user input (`abc`, `-1`, `99`, empty) gracefully without crashing
-- [x] 8 Functional Requirements mapped to menu
-- [x] Automated JUnit 5 tests passing
-- [x] `mvn clean package`, `mvn clean package -Pdev`, and `mvn clean package -Pprod` succeed
-- [x] Clean separation of daily folders
+# Or using script
+run.bat
+```
+
+### Maven Profiles
+```bash
+# Development profile
+mvn clean package -Pdev
+
+# Production profile
+mvn clean package -Pprod
+```
