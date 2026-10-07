@@ -6,7 +6,7 @@ Repository to track daily learning, assessments, and tasks during the HCL traini
 
 | Day | Topic / Task | Project / Code | Status |
 |---|---|---|---|
-| Day 01 | Java Platform Basics + Agile/Scrum | Day-01/day1-java-platform-basics | Completed |
+| Day 01 | Java Platform Basics + Agile/Scrum | Day-01/day1-java-platform-info | Completed |
 | Day 02 | Language Fundamentals + Git | Day-02/day2-language-fundamentals | Completed |
 | Day 03 | Control Flow + Maven | Day-03/day3-control-flow | Completed |
 
@@ -56,7 +56,7 @@ Java platform inspection program and Agile documentation for the Online Auction 
 
 ```text
 Day-01/
-└── day1-java-platform-basics/
+└── day1-java-platform-info/
 
 Day-02/
 └── day2-language-fundamentals/
@@ -74,7 +74,7 @@ README.md
 
 ### Day 01
 ```bash
-cd Day-01/day1-java-platform-basics
+cd Day-01/day1-java-platform-info
 javac PlatformInfo.java
 java PlatformInfo
 ```
