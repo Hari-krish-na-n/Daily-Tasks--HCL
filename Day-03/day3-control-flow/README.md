@@ -1,6 +1,6 @@
 # Day 03 — Control Flow + Maven
 
-Java console application for the Online Auction System project created to practice Java control-flow statements and Maven basics.
+Java console application based on the Online Auction System project created to practice Java control flow and Maven setup.
 
 ## Topics Practiced
 
