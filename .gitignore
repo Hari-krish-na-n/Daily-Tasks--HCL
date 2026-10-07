@@ -1,0 +1,39 @@
+# =====================================================
+#  .gitignore — Online Auction System Training Project
+#  Do NOT commit compiled bytecode or IDE files.
+# =====================================================
+
+# ----- Maven Build Output -----
+target/
+*.class
+
+# ----- IDE — IntelliJ IDEA -----
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# ----- IDE — Eclipse -----
+.classpath
+.project
+.settings/
+bin/
+
+# ----- IDE — VS Code -----
+.vscode/
+
+# ----- OS-generated files -----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ----- Logs -----
+*.log
+logs/
+
+# ----- Temporary / backup files -----
+*.tmp
+*.bak
+*.swp
+*~
