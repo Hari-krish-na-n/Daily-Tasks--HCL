@@ -30,6 +30,7 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <exec.mainClass>com.auction.PlatformInfo</exec.mainClass>
     </properties>
 
     <!-- =====================================================
@@ -69,7 +70,7 @@
                 <version>3.3.0</version>
                 <configuration>
                     <!-- Default main class; override with -Dexec.mainClass="..." -->
-                    <mainClass>com.auction.PlatformInfo</mainClass>
+                    <mainClass>${exec.mainClass}</mainClass>
                 </configuration>
             </plugin>
 

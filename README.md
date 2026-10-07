@@ -303,11 +303,11 @@ git push origin main
 
 ## 12. Final Checklist
 
-```
+```text
 [x] JDK 21 installed
-[ ] PlatformInfo runs using javac/java
-[ ] javap -c tested
-[ ] -verbose:class tested
+[x] PlatformInfo runs using javac/java
+[x] javap -c tested
+[x] -verbose:class tested
 [x] 8 user stories created
 [x] Story points assigned
 [x] Definition of Done created
@@ -319,10 +319,10 @@ git push origin main
 [x] Type casting demonstrated
 [x] Overflow demonstrated
 [x] Floating-point precision demonstrated
-[ ] mvn clean compile successful
+[x] Maven compile successful
 [x] .gitignore configured
 [x] README completed
-[ ] Ready for GitHub push
+[x] Ready for GitHub push
 ```
 
 ---
