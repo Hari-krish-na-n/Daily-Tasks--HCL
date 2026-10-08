@@ -1,4 +1,4 @@
-# Daily Tasks — HCL Training
+﻿# Daily Tasks – HCL Training
 
 Repository to track daily learning, assessments, and tasks during the HCL training program.
 
@@ -9,6 +9,21 @@ Repository to track daily learning, assessments, and tasks during the HCL traini
 | Day 01 | Java Platform Basics + Agile/Scrum | Day-01/day1-java-platform-info | Completed |
 | Day 02 | Language Fundamentals + Git | Day-02/day2-language-fundamentals | Completed |
 | Day 03 | Control Flow + Maven | Day-03/day3-control-flow | Completed |
+| Day 04 | OOP Concepts + IDE & Debugging | Day-04/day4-oop-concepts | Completed |
+
+---
+
+## Day 04 Overview: OOP Concepts + IDE & Debugging
+
+A Core Java console application based on the Online Auction System domain demonstrating Object-Oriented Programming (OOP) concepts and IDE debugging techniques.
+
+- **Classes & Inheritance:** `User` base class with specialized `Seller` and `Bidder` subclasses demonstrating `extends` and `super()`.
+- **Constructors & Chaining:** Multiple overloaded constructors in `Auction` chained using `this(...)`.
+- **Static vs Instance Members:** `private static int auctionCount` counter incremented upon object creation and accessed via `Auction.getAuctionCount()`.
+- **Encapsulation:** Private entity fields protected by validated getters and setters.
+- **equals() & hashCode():** Overridden in `Bid` comparing unique `bidId` values.
+- **Service Layer & Packages:** Clean separation across `com.auction.model`, `com.auction.service`, and `com.auction.app`.
+- **IDE Debugging:** Planted logic bug in bid increment validation diagnosed using breakpoints, conditional breakpoints (`newBid < currentBid`), watch variables, call stack, logpoint, and hot code replace.
 
 ---
 
@@ -64,6 +79,19 @@ Day-02/
 Day-03/
 └── day3-control-flow/
 
+Day-04/
+└── day4-oop-concepts/
+    ├── pom.xml
+    ├── README.md
+    ├── src/
+    │   └── main/java/com/auction/
+    │       ├── model/
+    │       ├── service/
+    │       └── app/
+    └── docs/
+        ├── OOP_NOTES.md
+        └── DEBUGGING_NOTES.md
+
 .gitignore
 README.md
 ```
@@ -102,4 +130,15 @@ mvn exec:java
 # Run with profiles
 mvn clean package -Pdev
 mvn clean package -Pprod
+```
+
+### Day 04
+```bash
+cd Day-04/day4-oop-concepts
+
+# Build and package
+mvn clean package
+
+# Run console app
+java -jar target/day4-oop-concepts-1.0-SNAPSHOT.jar
 ```
