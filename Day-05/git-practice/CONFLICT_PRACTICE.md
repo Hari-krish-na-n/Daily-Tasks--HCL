@@ -4,4 +4,11 @@
 
 ## Auction Bidding Policy
 
-Current rule: A bid must exceed the current bid by at least INR 1000 for standard auctions.
+Current rule: A bid must exceed the current bid by at least INR 500 (standard auctions)
+or INR 1000 (premium auctions with a reserve floor).
+
+# Conflict resolution note:
+# branch-a proposed INR 500 minimum increment.
+# branch-b proposed INR 1000 minimum increment.
+# Resolution: both values are correct for different auction types.
+# The strategy pattern (BidValidationStrategy) handles this distinction in code.
