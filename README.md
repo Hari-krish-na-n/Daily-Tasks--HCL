@@ -1,4 +1,4 @@
-﻿# Daily Tasks – HCL Training
+# Daily Tasks – HCL Training
 
 Repository to track daily learning, assessments, and tasks during the HCL training program.
 
@@ -10,10 +10,23 @@ Repository to track daily learning, assessments, and tasks during the HCL traini
 | Day 02 | Language Fundamentals + Git | Day-02/day2-language-fundamentals | Completed |
 | Day 03 | Control Flow + Maven | Day-03/day3-control-flow | Completed |
 | Day 04 | OOP Concepts + IDE & Debugging | Day-04/day4-oop-concepts | Completed |
+| Day 05 | Inheritance & Polymorphism + Git Branching & Merging | Day-05/day5-inheritance-polymorphism | Completed |
 
 ---
 
-## Day 04 Overview: OOP Concepts + IDE & Debugging
+## Day 05 Overview: Inheritance & Polymorphism + Git Branching & Merging
+
+A Core Java application based on the Online Auction System domain demonstrating advanced OOP concepts (abstract classes, interfaces, method overriding/overloading, runtime polymorphism, and Strategy Pattern) alongside professional Git branching, merging, conflict resolution, and rebasing.
+
+- **Abstract Base Entity:** `BaseEntity` providing `id`, `createdAt`, `updatedAt`, `markUpdated()`, and abstract `getSummary()`.
+- **Inheritance Hierarchy:** `BaseEntity` extended by `User` (subclassed by `Bidder` and `Seller`) and `AuctionItem`.
+- **Polymorphic Role Hierarchy:** `AuctionRole` enum implementing Spring Security-compatible authorities with role-specific permissions and descriptions.
+- **Strategy Pattern (Dynamic Polymorphism):** `BidValidationStrategy` interface with `StandardBidValidationStrategy` (₹500 min increment + budget check) and `PremiumBidValidationStrategy` (5% increment + floor + verified bidder check).
+- **Payment Hierarchy Learning Exercise:** Abstract `Payment` class (`pay()`, `pay(note)`, `printReceipt()`), `Refundable` interface, and concrete classes `CardPayment`, `UpiPayment`, and `CashPayment`.
+- **Git Branching & Merging Practice:** Feature branch workflow (`feature/day-5-inheritance-polymorphism`), fast-forward vs three-way merges, simulated merge conflict resolution (`practice/conflict-branch-a` & `b`), and interactive rebase demonstration (`practice/rebase-demo`).
+- **Comprehensive Testing:** 36 automated JUnit 5 tests covering all hierarchies, validations, and edge cases.
+
+---
 
 A Core Java console application based on the Online Auction System domain demonstrating Object-Oriented Programming (OOP) concepts and IDE debugging techniques.
 
@@ -92,6 +105,21 @@ Day-04/
         ├── OOP_NOTES.md
         └── DEBUGGING_NOTES.md
 
+Day-05/
+└── day5-inheritance-polymorphism/
+    ├── pom.xml
+    ├── README.md
+    ├── src/
+    │   ├── main/java/com/auction/
+    │   │   ├── app/
+    │   │   ├── learning/payment/
+    │   │   ├── model/
+    │   │   ├── service/
+    │   │   └── strategy/
+    │   └── test/java/com/auction/
+    └── docs/
+        └── CONFLICT_PRACTICE.md
+
 .gitignore
 README.md
 ```
@@ -141,4 +169,18 @@ mvn clean package
 
 # Run console app
 java -jar target/day4-oop-concepts-1.0-SNAPSHOT.jar
+```
+
+### Day 05
+```bash
+cd Day-05/day5-inheritance-polymorphism
+
+# Run all 36 JUnit 5 tests
+mvn clean test
+
+# Build and package
+mvn clean package
+
+# Run the console demo application
+mvn exec:java
 ```
