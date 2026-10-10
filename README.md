@@ -11,6 +11,21 @@ Repository to track daily learning, assessments, and tasks during the HCL traini
 | Day 03 | Control Flow + Maven | Day-03/day3-control-flow | Completed |
 | Day 04 | OOP Concepts + IDE & Debugging | Day-04/day4-oop-concepts | Completed |
 | Day 05 | Inheritance & Polymorphism + Git Branching & Merging | Day-05/day5-inheritance-polymorphism | Completed |
+| Day 06 | Exception Handling + AI-Assisted Debugging | Day-06/day6-exception-handling | Completed |
+
+---
+
+## Day 06 Overview: Exception Handling + AI-Assisted Debugging
+
+A Core Java application based on the Online Auction System domain demonstrating checked and unchecked custom exception handling, multi-catch, exception chaining, audit logging via `finally`, and AI-assisted debugging practices.
+
+- **Custom Exceptions:** Checked `InsufficientStockException` and unchecked `InvalidQuantityException` and `InvalidBidException`.
+- **OrderProcessor Service:** Manages in-memory inventory with atomic updates and error recovery.
+- **Exception Chaining:** `OrderProcessingException` wraps lower-level exceptions preserving original causes accessible via `getCause()`.
+- **Auditing with `finally`:** `AuditService` logs every operation attempt unconditionally in `finally` blocks.
+- **Graceful Error Recovery:** Console menu recovers from input parsing errors (`NumberFormatException`) and domain rule rejections without crashing.
+- **Comprehensive Testing:** 45 automated JUnit 5 tests covering all edge cases and legacy OOP behaviors.
+- **AI-Assisted Debugging:** Root-cause analysis, reproduction, and verification for application-level checked exceptions and runtime input errors.
 
 ---
 
@@ -120,6 +135,23 @@ Day-05/
     └── docs/
         └── CONFLICT_PRACTICE.md
 
+Day-06/
+└── day6-exception-handling/
+    ├── pom.xml
+    ├── README.md
+    ├── src/
+    │   ├── main/java/com/auction/
+    │   │   ├── app/
+    │   │   ├── exception/
+    │   │   ├── learning/payment/
+    │   │   ├── model/
+    │   │   ├── service/
+    │   │   └── strategy/
+    │   └── test/java/com/auction/
+    └── docs/
+        ├── EXCEPTION_HANDLING_NOTES.md
+        └── AI_DEBUGGING_NOTES.md
+
 .gitignore
 README.md
 ```
@@ -184,3 +216,21 @@ mvn clean package
 # Run the console demo application
 mvn exec:java
 ```
+
+### Day 06
+```bash
+cd Day-06/day6-exception-handling
+
+# Run all 45 JUnit 5 tests
+mvn clean test
+
+# Build and package
+mvn clean package
+
+# Run automated demo
+java -jar target/day6-exception-handling-1.0-SNAPSHOT.jar --demo
+
+# Run interactive console app
+java -jar target/day6-exception-handling-1.0-SNAPSHOT.jar
+```
+
