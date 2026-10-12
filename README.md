@@ -12,6 +12,22 @@ Repository to track daily learning, assessments, and tasks during the HCL traini
 | Day 04 | OOP Concepts + IDE & Debugging | Day-04/day4-oop-concepts | Completed |
 | Day 05 | Inheritance & Polymorphism + Git Branching & Merging | Day-05/day5-inheritance-polymorphism | Completed |
 | Day 06 | Exception Handling + AI-Assisted Debugging | Day-06/day6-exception-handling | Completed |
+| Day 07 | Collections Framework — Part 1 | Day-07/day7-collections-framework | Completed |
+
+---
+
+## Day 07 Overview: Collections Framework — Part 1
+
+A Core Java application extending the Online Auction System to implement functional requirements FR1–FR3 using the Java Collections Framework, demonstrating core collection behaviors, a standalone library waitlist model, and empirical performance analysis.
+
+- **FR1 — User Authentication:** `ArrayList<User>` master registry paired with `HashSet<String>` for instant $\mathcal{O}(1)$ duplicate username prevention. Passwords remain confidential and are never printed.
+- **FR2 — Auction Listing Creation:** `ArrayList<Auction>` master catalogue supporting seller listing creation with price validation, default `PENDING` moderation state, and rich status tracking.
+- **FR3 — Admin Moderation:** `ArrayDeque<Auction>` FIFO queue for pending moderation, status transitions (`APPROVED` / `REJECTED`), and prevention of duplicate moderation.
+- **Collections Framework Showcase:** Focused demos of `ArrayList` vs `LinkedList`, `HashSet` vs `LinkedHashSet` vs `TreeSet`, `ArrayDeque` vs `PriorityQueue`, and safe iteration patterns (`Iterator.remove()`, `ListIterator`).
+- **ConcurrentModificationException:** Isolated demonstration showing how fail-fast iterators detect structural changes during iteration, accompanied by the safe `Iterator.remove()` solution.
+- **Library Waitlist Exercise:** Separate domain exercise modeling book catalogue (`ArrayList`), request deduplication (`LinkedHashSet`), FIFO borrower waitlist (`ArrayDeque`), faculty-first queue (`PriorityQueue`), and overdue purging (`Iterator.remove()`).
+- **ArrayList vs. LinkedList Benchmark:** Real nanosecond benchmarking using `System.nanoTime()` measuring head insertion and indexed `get(i)` lookups.
+- **Comprehensive Testing:** 54 automated JUnit 5 tests covering FR1–FR3 and legacy domain features.
 
 ---
 
@@ -152,6 +168,25 @@ Day-06/
         ├── EXCEPTION_HANDLING_NOTES.md
         └── AI_DEBUGGING_NOTES.md
 
+Day-07/
+└── day7-collections-framework/
+    ├── pom.xml
+    ├── README.md
+    ├── src/
+    │   ├── main/java/com/auction/
+    │   │   ├── app/
+    │   │   ├── demo/
+    │   │   ├── exception/
+    │   │   ├── learning/payment/
+    │   │   ├── model/
+    │   │   ├── service/
+    │   │   └── strategy/
+    │   └── test/java/com/auction/
+    └── docs/
+        ├── COLLECTIONS_NOTES.md
+        ├── COLLECTION_TIMING.md
+        └── FR1_FR3_IMPLEMENTATION.md
+
 .gitignore
 README.md
 ```
@@ -232,5 +267,25 @@ java -jar target/day6-exception-handling-1.0-SNAPSHOT.jar --demo
 
 # Run interactive console app
 java -jar target/day6-exception-handling-1.0-SNAPSHOT.jar
+```
+
+### Day 07
+```bash
+cd Day-07/day7-collections-framework
+
+# Run all 54 JUnit 5 tests
+mvn test
+
+# Build and package executable JAR
+mvn package -DskipTests
+
+# Run automated showcase (all demos & benchmark)
+java -jar target/day7-collections-framework-1.0-SNAPSHOT.jar --demo
+
+# Run interactive console application
+java -jar target/day7-collections-framework-1.0-SNAPSHOT.jar
+
+# Run ArrayList vs LinkedList timing benchmark standalone
+java -cp target/day7-collections-framework-1.0-SNAPSHOT.jar com.auction.demo.ListPerformanceBenchmark
 ```
 
