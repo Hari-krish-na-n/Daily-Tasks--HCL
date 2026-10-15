@@ -13,6 +13,34 @@ Repository to track daily learning, assessments, and tasks during the HCL traini
 | Day 05 | Inheritance & Polymorphism + Git Branching & Merging | Day-05/day5-inheritance-polymorphism | Completed |
 | Day 06 | Exception Handling + AI-Assisted Debugging | Day-06/day6-exception-handling | Completed |
 | Day 07 | Collections Framework — Part 1 | Day-07/day7-collections-framework | Completed |
+| Day 08 | Collections Framework — Part 2 | Day-08/day8-collections-framework | Completed |
+| Day 09 | Generics & AutoCloseable | Day-09/day9-generics | Completed |
+
+---
+
+## Day 09 Overview: Generics + AutoCloseable
+
+A Core Java application exploring generic abstractions, resource lifecycle management, and generic data persistence for the Online Auction System.
+
+- **Generic Toolkit:** Implemented `Pair<K, V>` and `Box<T extends Number>` enforcing compile-time numeric type boundaries.
+- **Bounded Methods & Wildcards:** Generic `max()` with `<T extends Comparable<T>>`, upper-bounded `List<? extends Number>` reading, and lower-bounded `Collection<? super Integer>` writing demonstrating the **PECS** rule (Producer Extends, Consumer Super).
+- **try-with-resources & AutoCloseable:** Robust reading of `products.csv` using try-with-resources alongside a custom `ResourceTracker` verifying LIFO closing order and resilient malformed CSV row handling.
+- **Generic CRUD Repository:** Developed `CrudRepository<T, ID>` interface and `InMemoryRepository<T, ID>` backed by `LinkedHashMap` with upsert duplicate semantics and type-safe `Function<T, ID> idExtractor`, reused across `User`, `Auction`, and `Bid` entities.
+- **Automated Testing:** 16 automated JUnit 5 tests covering all generic components, bounded operations, CSV parsing, and repository behaviors.
+
+---
+
+## Day 08 Overview: Collections Framework — Part 2
+
+A Core Java application based on the Online Auction System implementing functional requirements FR4–FR6, demonstrating Map architectures, sorting contracts, and reproducible equals/hashCode integrity.
+
+- **Map Showcase:** `HashMap` (O(1) lookup), `LinkedHashMap` (insertion order), and `TreeMap` (sorted key order), along with Map APIs and department frequency aggregation using `Map.merge()`.
+- **Comparable & Comparator:** Natural sorting via `Comparable<Employee>` on ID, custom salary-descending `Comparator`, chained tie-breaking by name ascending, and a safe top-five salary report.
+- **equals() & hashCode() Contract:** Deterministic demonstration of the missing-`hashCode()` bug in `HashSet` and `HashMap` alongside verified fix with contract compliance.
+- **FR4 — Bidding Validation:** Comprehensive validation ensuring bids meet minimum increment (`currentHighestBid + 500`), obey starting price rules, and respect auction timing boundaries.
+- **FR5 — Proxy/Auto-Bidding:** Dynamic auto-bidding engine maintaining maximum limits in nested Maps and automatically countering competitors up to each bidder's limit.
+- **FR6 — Anti-Sniping:** Automatic 5-minute auction deadline extension when bids arrive within the final 2 minutes.
+- **Automated Testing:** 14 automated JUnit 5 tests verifying all Map operations, sorting logic, contract integrity, and FR4–FR6 bidding workflows.
 
 ---
 

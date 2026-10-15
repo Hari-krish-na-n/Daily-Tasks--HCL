@@ -1,0 +1,9 @@
+id,name,category,startingPrice,quantity
+101,MacBook Pro M3,Electronics,120000.0,5
+102,Sony WH-1000XM5,Audio,18000.0,12
+103,Rolex Submariner,Watches,450000.0,2
+104,Canon EOS R6,Photography,165000.0,4
+105,Herman Miller Aeron,Furniture,85000.0,8
+106,iPad Pro 12.9,Electronics,95000.0,7
+INVALID_ROW_HERE,MissingFields
+107,Bose QuietComfort 45,Audio,22000.0,10
