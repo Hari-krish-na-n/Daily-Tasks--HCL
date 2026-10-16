@@ -15,6 +15,21 @@ Repository to track daily learning, assessments, and tasks during the HCL traini
 | Day 07 | Collections Framework — Part 1 | Day-07/day7-collections-framework | Completed |
 | Day 08 | Collections Framework — Part 2 | Day-08/day8-collections-framework | Completed |
 | Day 09 | Generics & AutoCloseable | Day-09/day9-generics | Completed |
+| Day 10 | Memory Management & Profiling | Day-10/day10-memory-management | Completed |
+
+---
+
+## Day 10 Overview: Memory Management & Profiling
+
+A Core Java application exploring JVM memory architecture, garbage collection mechanics, and memory leak mitigation within the Online Auction System.
+
+- **Stack vs Heap & StackOverflowError:** Measured recursive call depth across `-Xss256k` (1,541 frames) and `-Xss1m` (13,959 frames) demonstrating thread stack exhaustion.
+- **OutOfMemoryError & Heap Retention:** Reproduced heap exhaustion under `-Xmx64m` (stopped at 31 MB retained) showing how retained references act as GC roots.
+- **String += vs StringBuilder:** Nanosecond benchmarking showing `StringBuilder` running ~34.8x faster with zero GC pressure compared to quadratic array copies from immutable string concatenation.
+- **Garbage Collection Logging (-Xlog:gc):** Analyzed HotSpot G1 logs during Young GC sweeps and `System.gc()` Full GC pauses, tracing generational transitions and object reachability.
+- **Boxed Integer Cache:** Verified JLS §5.1.7 caching behavior for [-128, 127] demonstrating why `==` fails for 1000 while `.equals()` maintains value equality.
+- **Project Memory Review & Stack/Heap Diagram:** Fixed unbounded memory growth in `AuditService` using bounded capacity (FIFO eviction), added proxy limit cleanup in `BiddingService`, and drew a complete Mermaid stack/heap diagram for `BiddingService.placeBid()`.
+- **Automated Testing:** 13 automated JUnit 5 tests covering memory lab behaviors, bounded memory policies, and auction bidding flows.
 
 ---
 
