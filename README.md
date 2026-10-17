@@ -16,6 +16,20 @@ Repository to track daily learning, assessments, and tasks during the HCL traini
 | Day 08 | Collections Framework — Part 2 | Day-08/day8-collections-framework | Completed |
 | Day 09 | Generics & AutoCloseable | Day-09/day9-generics | Completed |
 | Day 10 | Memory Management & Profiling | Day-10/day10-memory-management | Completed |
+| Day 11 | AI Integration (Core Java) & FR7-FR8 | Day-11/day11-ai-integration-core-java | Completed |
+
+---
+
+## Day 11 Overview: AI Integration (Core Java) & FR7–FR8
+
+A Core Java application exploring AI-assisted software engineering, critical code review of AI-generated Java solutions, prompt engineering comparison, and the realization of Functional Requirements FR7 (Auction Closing & Winner Declaration) and FR8 (Settlement & Shipment) for the Online Auction System.
+
+- **Student POJO Prompt Comparison:** Contrasted vague vs specific prompts, establishing why explicit constraints (encapsulation, validation, equals/hashCode contract, defensive copies) are required for enterprise code.
+- **StudentService Critical Code Review:** Uncovered and repaired 6 genuine architectural weaknesses (defensive copying via `Collections.unmodifiableList`, `LinkedHashMap` duplicate ID handling, O(1) indexed lookups, Optional query returns, and boundary validations).
+- **Specialized Repository Architecture:** Extended Day 9's generic `CrudRepository<T, ID>` and `InMemoryRepository<T, ID>` into `BidRepository` and `InMemoryBidRepository` without rewriting storage logic.
+- **FR7 — Auction Closing & Winner Declaration:** Evaluated closing deadlines and reserve prices, declaring winners with `SOLD` status or marking auctions `UNSOLD` when reserve is not met.
+- **FR8 — Settlement & Shipment:** End-to-end escrow workflow deducting 5% platform fee, enforcing payment before shipment, capturing courier tracking, and releasing net payout to the seller.
+- **Automated Testing:** 16 automated JUnit 5 tests covering Student POJO & StudentService, BidRepository queries, and FR7/FR8 closing and settlement workflows.
 
 ---
 
